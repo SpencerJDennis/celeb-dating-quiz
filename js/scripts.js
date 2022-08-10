@@ -6,13 +6,12 @@ function hideResults() {
   document.getElementById("ld").setAttribute("class", "hidden");
   document.getElementById("sorry").setAttribute("class", "hidden");
 }
-
-window.onload = function() {
-  document.querySelector("form").onsubmit = function(event) {
+function nameoffunction(event) {
+    console.log("hello")
     event.preventDefault();
     hideResults();
-    const age = parseInt(document.querySelector("input#age").value);
-    const height = parseInt(document.querySelector("input#height").value);
+      const age = parseInt(document.querySelector("input#age").value);
+      const height = parseInt(document.querySelector("input#height").value);
 
     if (!age || !height) {
       document.getElementById("error-message").removeAttribute("class");
@@ -28,5 +27,9 @@ window.onload = function() {
         document.getElementById("sorry").removeAttribute("class");
       }
     }
+    document.querySelector("form").removeEventListener("submit", nameoffunction)
   }
-};
+
+window.onload = function() {
+  document.querySelector("form").addEventListener("submit", nameoffunction)  
+}
